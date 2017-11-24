@@ -15,12 +15,18 @@ router.get('/api/v6/get_colours', get_unique_colours);
 
 function get_unique_jobs(req, res){
     console.log('getting unique jobs');
-    USERCLASS.find().distinct('job').then();
+    USERCLASS.find().distinct('job').then(function (jobs){
+        console.log(jobs);
+        res.json(jobs);
+    });
 }
 
 function get_unique_colours(req, res){
     console.log('getting unique colours');
-    USERCLASS.find().distinct('favourite_colours').then();
+    USERCLASS.find().distinct('favourite_colours').then(function (colours){
+        console.log(colours);
+        res.json(colours);
+    });
 }
 
 // api
@@ -72,14 +78,14 @@ function do_update(req, res){
     }
     USERCLASS.findByIdAndUpdate(req.body._id, update).then(function (result){
         console.log(result);
-        res.json({message: 'backend updatedd!'})
+        res.json({message: 'backend updated!'})
     });
 }
 
 function do_delete(req, res){
     console.log('deleting employee');
     console.log(req.params);
-    USERCLASS.findByIdAndRemove(req.parans._id).then(function (result){
+    USERCLASS.findByIdAndRemove(req.params._id).then(function (result){
         console.log(result);
         res.json({message: 'backend deleted!'})
     });
