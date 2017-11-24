@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="employees" ng-controller="do_data">
 <head>
-    <title>MEAN demo</title>
+    <title>MEAN 5 demo</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">    
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="http://www.stream2watch.cc/images/categories/4/64x64/14616606297074.png">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
@@ -10,7 +11,50 @@
 
 </head>
 <body>
-    <h1>MEAN demo</h1>
+    <h2>{{message}}</h2>
+    <h1>CREATE</h1>
+<form>
+<input type="text" placeholder="name" ng-model="input_name">
+<input type="text" placeholder="email" ng-model="input_email">
+<input type="text" placeholder="gender" ng-model="input_gender">
+<input type="text" placeholder="job" ng-model="input_job">
+<input type="text" placeholder="favourite colour" ng-model="input_favourite_colour">
+<input type="text" placeholder="avatar" ng-model="input_avatar">
+
+<button class="btn btn-primary" ng-click="create()">create employee</button>
+
+</form>
+
+<h2>READ</h2>
+<table class="table table-bordered">
+<thead>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>gender</th>
+      <th>job</th>
+      <th>favourite colours</th>
+      <th>avatar</th>
+      <th>UPDATE</th>
+      <th>DELETE</th>
+    </tr>
+</thead>
+<tbody ng-repeat="employee in employees">
+    <tr>
+        <td><input type="text" ng-model="employee.name"></td>
+        <td><input type="text" ng-model="employee.email"></td>
+        <td><input type="text" ng-model="employee.gender"></td>
+        <td><input type="text" ng-model="employee.job"></td>
+        <td><input type="text" ng-model="employee.favourite_colours"></td>
+        <td><input type="text" ng-model="employee.avatar"></td>
+        <td><button class="btn btn-success" ng-click="update(employee)">update</button></td>
+        <td><button class="btn btn-warning" ng-click="delete(employee)">update</button></td>
+        
+    </tr>
+</tbody>
+
+
+</table>
 
 </body>
 </html>
